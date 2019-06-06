@@ -2,7 +2,6 @@ const card = document.getElementById('board');
 const colorBoard = document.querySelector('.board');
 const colorCards = document.querySelectorAll('.board li');
 let picks = [];
-console.log(picks);
 const randomColors = ['Red', 'Green', 'cyan', 'plum', 'saddlebrown', 'teal', 'orange', 'tan', 'Red', 'Green', 'cyan', 'plum', 'saddlebrown', 'teal', 'orange', 'tan'];
 const curIndex = Array.prototype.slice.call( document.getElementById('board').children );
 let count = 0;
@@ -11,12 +10,14 @@ const displayCard = (e) => {
     const stepsCount = document.getElementById('steps');
     count++;
     stepsCount.innerHTML = 'Steps: '+ count;
-    //console.log(count);
+    console.log(count);
     //console.log(picks);
     const curLi = curIndex.indexOf(e.target);
     e.target.setAttribute("style", 'background-color:' + randomColors[curLi]);
     e.target.setAttribute("open", true);
     e.target.setAttribute('freeze', false);
+    // const getColor = colorCards[curLi].style['background-color'];
+    // console.log(getColor);
 
     let a = [];
     for(let i=0; i<colorCards.length; i++) {
@@ -24,14 +25,15 @@ const displayCard = (e) => {
             a.push(i);
         }
     }
-    //console.log(a);
+    console.log(a);
 
     if(a.length === 2) {
-        console.log(colorCards[a[1]].style.backgroundColor);
-        //console.log(colorCards[0]);
-        if(picks[0] === picks[1]) {
-            colorCards[a[0]].style.backgroundColor = picks[a[0]];
-            colorCards[a[1]].style.backgroundColor = picks[a[1]];
+        // console.log(a);
+        // console.log(picks[a[0]].color);
+        // console.log(picks[a[1]].color);
+        if(picks[a[0]].color === picks[a[1]].color) {
+            colorCards[a[0]].style.backgroundColor = picks[a[0]].color;
+            colorCards[a[1]].style.backgroundColor = picks[a[1]].color;
             colorCards[a[0]].setAttribute('freeze', true);
             colorCards[a[1]].setAttribute('freeze', true);
             colorCards[a[0]].style.pointerEvents = "none";
@@ -46,20 +48,20 @@ const displayCard = (e) => {
             colorCards[a[0]].setAttribute('open', false);
             colorCards[a[1]].setAttribute('open', false);
         }
-        a = [];
     }
-    
-    //console.log(a);
+    a = [];
+    console.log(a);
 }
 card.addEventListener("click", displayCard);
 
 const shuffle = (array) => {
-    array.sort(() => Math.random() - 0.5)
-    picks.push(array);
-    //console.log(picks);
-    //return picks;
+  //array.map(item => [item, item]).flat();
+  array.sort(() => Math.random() - 0.5).map(item => {
+      picks.push({color: item});
+  });
+  //console.log(picks);
+  return picks;
 }
-
 const init = () => {
   let x = shuffle(randomColors);
 }
