@@ -10,4 +10,10 @@ ul {
 #triangle {
   margin: 20px auto 0 auto;
   width: 768px;
+  color: red;
+  padding : 10px 15px;
+  text-align: center;
+}
+#tri {
+  margin-top: 20px;
 }
