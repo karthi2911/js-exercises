@@ -26,6 +26,8 @@ const tri = document.getElementById('tri');
 generate.addEventListener('click', function() {
    let inputid = document.getElementById('inputID').value;
    let strArray = inputid.trim().split(" ");
+   let para = "<p>"+ inputid + "</p>";
+    tri.insertAdjacentHTML("afterend", para);
    const len = strArray.length;
    let totArr = [];
    for(let i=0; i<len; i++) {
@@ -40,9 +42,6 @@ generate.addEventListener('click', function() {
         totArr.push(finalArray);
        }
        strArray = finalArray;
-       // strArray.forEach((val, j) => {
-       //     tri.appendChild(finalArray);
-       // });
    }
 
    //console.log(totArr);
