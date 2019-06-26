@@ -39,7 +39,7 @@ function detailClick() {
     data = JSON.parse(localStorage.getItem(userID))
     template(data);
   } else {
-    fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(popResponse => {
       popResponse.json()
       .then(popupdata => {
@@ -57,6 +57,7 @@ function template(data) {
   console.log(data);
   let userHeading = document.createElement('H4');
   userHeading.innerHTML = 'Popup Details'; userHeading = popup.appendChild(userHeading);
+  
   // Name
   let name = document.createElement('p'); name = popup.appendChild(name);
   name.innerHTML = `<strong>Name:</strong> ${data.name}`;
