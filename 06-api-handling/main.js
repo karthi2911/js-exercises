@@ -39,7 +39,7 @@ function detailClick() {
     data = JSON.parse(localStorage.getItem(userID))
     template(data);
   } else {
-    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
     .then(popResponse => {
       popResponse.json()
       .then(popupdata => {
