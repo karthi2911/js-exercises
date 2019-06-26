@@ -19,6 +19,11 @@
 #popupContent {
     position: relative;
 }
+#popupContent h4 {
+    color: #00695c;
+    border-bottom: 1px solid #cdcdcd;
+    padding-bottom: 10px;
+}
 .close {
     position: absolute;
     right: 10px;
