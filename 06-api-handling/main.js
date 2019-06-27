@@ -7,7 +7,7 @@ fetch(fetchURL)
     return response.json()
   })
   .then(data => {
-    console.log(data)
+    //console.log(data)
     data.forEach(e => {
       let li = document.createElement('li');
       li = fetchlist.appendChild(li);
@@ -54,10 +54,14 @@ function detailClick() {
   }
 }
 function template(data) {
-  console.log(data);
+  //console.log(data);
   let userHeading = document.createElement('H4');
   userHeading.innerHTML = 'Popup Details'; userHeading = popup.appendChild(userHeading);
   
+  // Close
+  let close = document.createElement('div');
+  close.innerHTML = '<a href="#!" class="modal-close close">X</a>'; close = popup.appendChild(close);
+
   // Name
   let name = document.createElement('p'); name = popup.appendChild(name);
   name.innerHTML = `<strong>Name:</strong> ${data.name}`;
